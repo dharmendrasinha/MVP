@@ -1,0 +1,93 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="project">
+            <h2><span>Project</span> {{project.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Project No</span></dt>
+                <dd>
+                    <span>{{project.projectNo}}</span>
+                </dd>
+                <dt><span>Cis Program Type</span></dt>
+                <dd>
+                    <span>{{project.cisProgramType}}</span>
+                </dd>
+                <dt><span>Proj Eff Date</span></dt>
+                <dd>
+                    <span>{{project.projEffDate}}</span>
+                </dd>
+                <dt><span>Cust No</span></dt>
+                <dd>
+                    <span>{{project.custNo}}</span>
+                </dd>
+                <dt><span>Cust Contact Id</span></dt>
+                <dd>
+                    <span>{{project.custContactId}}</span>
+                </dd>
+                <dt><span>Proj Name</span></dt>
+                <dd>
+                    <span>{{project.projName}}</span>
+                </dd>
+                <dt><span>Proj Address</span></dt>
+                <dd>
+                    <span>{{project.projAddress}}</span>
+                </dd>
+                <dt><span>Proj Addl Address</span></dt>
+                <dd>
+                    <span>{{project.projAddlAddress}}</span>
+                </dd>
+                <dt><span>Proj City</span></dt>
+                <dd>
+                    <span>{{project.projCity}}</span>
+                </dd>
+                <dt><span>Proj State</span></dt>
+                <dd>
+                    <span>{{project.projState}}</span>
+                </dd>
+                <dt><span>Proj Zip Code</span></dt>
+                <dd>
+                    <span>{{project.projZipCode}}</span>
+                </dd>
+                <dt><span>Proj County</span></dt>
+                <dd>
+                    <span>{{project.projCounty}}</span>
+                </dd>
+                <dt><span>Proj Est Start Date</span></dt>
+                <dd>
+                    <span>{{project.projEstStartDate}}</span>
+                </dd>
+                <dt><span>Proj Est Completion Date</span></dt>
+                <dd>
+                    <span>{{project.projEstCompletionDate}}</span>
+                </dd>
+                <dt><span>Proj Est Drawdown Date</span></dt>
+                <dd>
+                    <span>{{project.projEstDrawdownDate}}</span>
+                </dd>
+                <dt><span>Proj Cust Int Ind</span></dt>
+                <dd>
+                    <span>{{project.projCustIntInd}}</span>
+                </dd>
+                <dt><span>Customer</span></dt>
+                <dd>
+                    <div *ngIf="project.customer">
+                        <a [routerLink]="['/customer', project.customer?.id, 'view']">{{project.customer?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project', project.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

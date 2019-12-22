@@ -1,0 +1,89 @@
+{
+    "name": "Project",
+    "fields": [
+        {
+            "fieldName": "projectNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cisProgramType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projEffDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "custNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "custContactId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projAddlAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projCity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projState",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projZipCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projCounty",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "projEstStartDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "projEstCompletionDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "projEstDrawdownDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "projCustIntInd",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "customer",
+            "otherEntityRelationshipName": "project",
+            "relationshipName": "customer",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191222034923",
+    "entityTableName": "project",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

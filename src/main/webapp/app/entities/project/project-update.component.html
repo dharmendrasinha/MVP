@@ -1,0 +1,115 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-project-heading">Create or edit a Project</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projectNo">Project No</label>
+                    <input type="text" class="form-control" name="projectNo" id="field_projectNo"
+                           formControlName="projectNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cisProgramType">Cis Program Type</label>
+                    <input type="text" class="form-control" name="cisProgramType" id="field_cisProgramType"
+                           formControlName="cisProgramType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projEffDate">Proj Eff Date</label>
+                    <div class="d-flex">
+                        <input id="field_projEffDate" type="datetime-local" class="form-control" name="projEffDate" formControlName="projEffDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_custNo">Cust No</label>
+                    <input type="text" class="form-control" name="custNo" id="field_custNo"
+                           formControlName="custNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_custContactId">Cust Contact Id</label>
+                    <input type="text" class="form-control" name="custContactId" id="field_custContactId"
+                           formControlName="custContactId"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projName">Proj Name</label>
+                    <input type="text" class="form-control" name="projName" id="field_projName"
+                           formControlName="projName"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projAddress">Proj Address</label>
+                    <input type="text" class="form-control" name="projAddress" id="field_projAddress"
+                           formControlName="projAddress"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projAddlAddress">Proj Addl Address</label>
+                    <input type="text" class="form-control" name="projAddlAddress" id="field_projAddlAddress"
+                           formControlName="projAddlAddress"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projCity">Proj City</label>
+                    <input type="text" class="form-control" name="projCity" id="field_projCity"
+                           formControlName="projCity"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projState">Proj State</label>
+                    <input type="text" class="form-control" name="projState" id="field_projState"
+                           formControlName="projState"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projZipCode">Proj Zip Code</label>
+                    <input type="text" class="form-control" name="projZipCode" id="field_projZipCode"
+                           formControlName="projZipCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projCounty">Proj County</label>
+                    <input type="text" class="form-control" name="projCounty" id="field_projCounty"
+                           formControlName="projCounty"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projEstStartDate">Proj Est Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_projEstStartDate" type="datetime-local" class="form-control" name="projEstStartDate" formControlName="projEstStartDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projEstCompletionDate">Proj Est Completion Date</label>
+                    <div class="d-flex">
+                        <input id="field_projEstCompletionDate" type="datetime-local" class="form-control" name="projEstCompletionDate" formControlName="projEstCompletionDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projEstDrawdownDate">Proj Est Drawdown Date</label>
+                    <div class="d-flex">
+                        <input id="field_projEstDrawdownDate" type="datetime-local" class="form-control" name="projEstDrawdownDate" formControlName="projEstDrawdownDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_projCustIntInd">Proj Cust Int Ind</label>
+                    <input type="text" class="form-control" name="projCustIntInd" id="field_projCustIntInd"
+                           formControlName="projCustIntInd"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_customer">Customer</label>
+                    <select class="form-control" id="field_customer" name="customer" formControlName="customer">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customerOption.id === editForm.get('customer').value?.id ? editForm.get('customer').value : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

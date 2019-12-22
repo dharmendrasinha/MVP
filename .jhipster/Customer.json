@@ -1,0 +1,32 @@
+{
+    "name": "Customer",
+    "fields": [
+        {
+            "fieldName": "custNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "custContactId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "custContactLastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "custContactFirstName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191222050816",
+    "entityTableName": "customer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

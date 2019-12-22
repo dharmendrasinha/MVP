@@ -1,0 +1,91 @@
+<div>
+    <h2 id="page-heading">
+        <span>Projects</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-project" [routerLink]="['/project/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Project
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="projects?.length === 0">
+        <span>No projects found</span>
+    </div>
+    <div class="table-responsive" *ngIf="projects?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Project No</span></th>
+            <th scope="col" ><span>Cis Program Type</span></th>
+            <th scope="col" ><span>Proj Eff Date</span></th>
+            <th scope="col" ><span>Cust No</span></th>
+            <th scope="col" ><span>Cust Contact Id</span></th>
+            <th scope="col" ><span>Proj Name</span></th>
+            <th scope="col" ><span>Proj Address</span></th>
+            <th scope="col" ><span>Proj Addl Address</span></th>
+            <th scope="col" ><span>Proj City</span></th>
+            <th scope="col" ><span>Proj State</span></th>
+            <th scope="col" ><span>Proj Zip Code</span></th>
+            <th scope="col" ><span>Proj County</span></th>
+            <th scope="col" ><span>Proj Est Start Date</span></th>
+            <th scope="col" ><span>Proj Est Completion Date</span></th>
+            <th scope="col" ><span>Proj Est Drawdown Date</span></th>
+            <th scope="col" ><span>Proj Cust Int Ind</span></th>
+            <th scope="col" ><span>Customer</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let project of projects ;trackBy: trackId">
+                <td><a [routerLink]="['/project', project.id, 'view' ]">{{project.id}}</a></td>
+                <td>{{project.projectNo}}</td>
+                <td>{{project.cisProgramType}}</td>
+                <td>{{project.projEffDate | date:'medium'}}</td>
+                <td>{{project.custNo}}</td>
+                <td>{{project.custContactId}}</td>
+                <td>{{project.projName}}</td>
+                <td>{{project.projAddress}}</td>
+                <td>{{project.projAddlAddress}}</td>
+                <td>{{project.projCity}}</td>
+                <td>{{project.projState}}</td>
+                <td>{{project.projZipCode}}</td>
+                <td>{{project.projCounty}}</td>
+                <td>{{project.projEstStartDate | date:'medium'}}</td>
+                <td>{{project.projEstCompletionDate | date:'medium'}}</td>
+                <td>{{project.projEstDrawdownDate | date:'medium'}}</td>
+                <td>{{project.projCustIntInd}}</td>
+                <td>
+                    <div *ngIf="project.customer">
+                        <a [routerLink]="['/customer', project.customer?.id, 'view' ]" >{{project.customer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/project', project.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/project', project.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(project)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

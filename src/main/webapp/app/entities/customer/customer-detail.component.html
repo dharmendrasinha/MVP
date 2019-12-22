@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="customer">
+            <h2><span>Customer</span> {{customer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Cust No</span></dt>
+                <dd>
+                    <span>{{customer.custNo}}</span>
+                </dd>
+                <dt><span>Cust Contact Id</span></dt>
+                <dd>
+                    <span>{{customer.custContactId}}</span>
+                </dd>
+                <dt><span>Cust Contact Last Name</span></dt>
+                <dd>
+                    <span>{{customer.custContactLastName}}</span>
+                </dd>
+                <dt><span>Cust Contact First Name</span></dt>
+                <dd>
+                    <span>{{customer.custContactFirstName}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/customer', customer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
